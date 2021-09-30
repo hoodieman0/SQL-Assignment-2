@@ -17,14 +17,18 @@ SELECT concat(e.Fname, ' ', e.Minit, '. ', e.Lname) AS Employee,
     ORDER BY e.Lname;
     
 /* Part 1d */
-SELECT DISTINCT pname, sum(hours) FROM project p 
+SELECT DISTINCT pname, sum(hours) AS Hours FROM project p 
 	RIGHT JOIN works_on w 
     ON p.pnumber = w.pno 
     GROUP BY pname;
+    
+/* Part 1e */
+SELECT ssn, fname, minit, lname FROM employee 
+	WHERE dno = (SELECT dno FROM employee 
+				WHERE salary = (SELECT max(salary) FROM employee)
+                );
 
 /*
-d. List the name and total working hours for all projects based in Houston that have more than two employees working on them. 
-
 e. List the SSN, first name, middle initial, and last name of all employees who work in the department that has the employee with 
 	the highest salary among all employees. 
 

@@ -17,15 +17,10 @@ SELECT concat(e.Fname, ' ', e.Minit, '. ', e.Lname) AS Employee,
     ORDER BY e.Lname;
     
 /* Part 1d */
-/*SELECT Pname, Hours
-	FROM project p
-    INNER JOIN works_on w
-    ON p.Pnumber = w.Pno;*/
-SELECT Pname, Plocation, Hours 
-	FROM project p
-	INNER JOIN works_on w
-    ON p.Pnumber = w.Pno
-    AND p.Plocation = 'Houston';
+SELECT DISTINCT pname, sum(hours) FROM project p 
+	RIGHT JOIN works_on w 
+    ON p.pnumber = w.pno 
+    GROUP BY pname;
 
 /*
 d. List the name and total working hours for all projects based in Houston that have more than two employees working on them. 

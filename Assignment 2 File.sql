@@ -36,12 +36,29 @@ SELECT pname, dname
     project.pnumber = ANY 
 		(SELECT Temp.pno 
 			FROM (SELECT pno, sum(hours) 
-				FROM works_on JOIN department ON department.mgr_ssn = works_on.essn GROUP BY pno HAVING sum(hours) >= 20)
+				FROM works_on JOIN department 
+                ON department.mgr_ssn = works_on.essn 
+                GROUP BY pno HAVING sum(hours) >= 20)
 			AS Temp);
 
 /* Part 1g */
-SELECT dname FROM department LEFT JOIN employee ON ;
-SELECT fname, dno, dependent_name FROM employee LEFT JOIN dependent ON ;
+SELECT dname FROM department 
+	WHERE dnumber = (SELECT temp.dno 
+					FROM (SELECT essn, dno, count(*) AS amount 
+							FROM employee 
+                            JOIN dependent 
+                            ON employee.ssn = dependent.essn 
+                            GROUP BY dno) 
+					AS Temp 
+                    WHERE temp.amount = (SELECT max(temp.amount) 
+											FROM (SELECT essn, dno, count(*) AS amount 
+												FROM employee 
+                                                JOIN dependent 
+                                                ON employee.ssn = dependent.essn 
+                                                GROUP BY dno)
+											AS Temp
+										)
+					);
 
 /* Part 1h */
 SELECT plocation FROM project WHERE department.dnumber = (SELECT min(SELECT hours FROM works_on GROUP BY essn ) FROM works_on);
@@ -49,8 +66,6 @@ SELECT * FROM department JOIN works_on JOIN project;
 SELECT * FROM works_on WHERE hours IN (SELECT pno, hours from works_on GROUP BY pno) ;
 
 /*
-f. List the project name and the department that manages that project for all projects that have supervisors working on them for at least 20 hours. 
-
 g. List the name of the department whose employees have the greatest total of dependents. 
 
 h. List the location(s) of the department that worksthe fewest number of hours on projects. 

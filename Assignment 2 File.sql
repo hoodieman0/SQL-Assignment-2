@@ -28,13 +28,16 @@ SELECT ssn, fname, minit, lname FROM employee
 				WHERE salary = (SELECT max(salary) FROM employee)
                 );
 
-/* Part 1f INCOMPLETE*/
-SELECT pname, dname FROM project p INNER JOIN department d ON p.dnum = d.dnumber AND d.mgr_ssn = ANY ((SELECT essn FROM works_on GROUP BY essn HAVING hours >=20));
-SELECT mgr_ssn, sum(w.hours) FROM department d LEFT JOIN works_on w ON d.mgr_ssn = w.essn GROUP BY mgr_ssn HAVING sum(w.hours) > 20;
-
-SELECT essn FROM works_on GROUP BY essn HAVING sum(hours) >20;
-SELECT pname, pnumber, dname, dnum FROM project p JOIN department d ON p.dnum = d.dnumber AND d.mgr_ssn = ANY (SELECT pno FROM works_on GROUP BY pno HAVING hours >= 20);
-SELECT essn, hours FROM works_on Group by essn having hours >= 20;
+/* Part 1f */
+SELECT pname, dname 
+	FROM project JOIN department 
+    ON project.dnum = department.dnumber 
+    AND 
+    project.pnumber = ANY 
+		(SELECT Temp.pno 
+			FROM (SELECT pno, sum(hours) 
+				FROM works_on JOIN department ON department.mgr_ssn = works_on.essn GROUP BY pno HAVING sum(hours) >= 20)
+			AS Temp);
 
 /* Part 1g */
 SELECT dname FROM department LEFT JOIN employee ON ;

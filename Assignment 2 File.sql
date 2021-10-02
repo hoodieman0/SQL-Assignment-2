@@ -114,10 +114,10 @@ INSERT INTO PartInWarehouse VALUES ('AT94', 3);
 /* Part 2f */
 INSERT INTO PartInWarehouse VALUES('KV29', 1);
 
-/*
-f. Show how the primary key constraint is being correctly enforced in the PartInWarehouse table by trying to add the following record to that table: 
-	i. MyPartNum2 = KV29, MyWarehouseNum2 = 1 
+/* Part 2g */
+INSERT INTO PartInWarehouse VALUES('DW11', 5);
 
+/*
 g. Show how the foreign key constraint is being correctly enforced in the PartInWarehouse table by trying to add the following record to that table: 
 	i. MyPartNum2 = DW11, MyWarehouseNum = 5 
     

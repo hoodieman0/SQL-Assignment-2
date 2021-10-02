@@ -117,10 +117,10 @@ INSERT INTO PartInWarehouse VALUES('KV29', 1);
 /* Part 2g */
 INSERT INTO PartInWarehouse VALUES('DW11', 5);
 
+/* Part 2h */
+-- See file 'jmok1_HW1Q4.sql' attached
+
 /*
-g. Show how the foreign key constraint is being correctly enforced in the PartInWarehouse table by trying to add the following record to that table: 
-	i. MyPartNum2 = DW11, MyWarehouseNum = 5 
-    
 h. Use the Export Data function in MySQL Workbench to export a self-contained dump file (.sql file) of your database. 
 	Please name your dump file as follows: [your UNH username]_HW1Q4.sql. For example, a student with the UNH username jsmith2 would name the file jsmith2_HW1Q4.sql. 
 */

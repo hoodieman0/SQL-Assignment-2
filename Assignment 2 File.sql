@@ -86,11 +86,13 @@ CREATE TABLE WarehouseDetail
     PRIMARY KEY(WarehouseNum)
 );
 
+/* Part 2b */
+INSERT INTO WarehouseDetail VALUES (1, 'New Haven, CT');
+INSERT INTO WarehouseDetail VALUES(2, 'Boston, MA');
+INSERT INTO WarehouseDetail VALUES(3, 'White Plains, NY');
+
 
 /*
-a. Create a table named “WarehouseDetail” in the database. The table should have two columns: WarehouseNum and Location. 
-	Set WarehouseNum as the primary key for this table. 
-
 b. Create the following records in the newly created WarehouseDetail table (the method demonstrated in class with the MySQL Workbench Results Grid): 
 	i. WarehouseNum =1, Location = New Haven, CT 
     ii. WarehouseNum= 2, Location = Boston, MA 

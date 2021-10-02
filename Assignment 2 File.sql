@@ -91,13 +91,12 @@ INSERT INTO WarehouseDetail VALUES (1, 'New Haven, CT');
 INSERT INTO WarehouseDetail VALUES(2, 'Boston, MA');
 INSERT INTO WarehouseDetail VALUES(3, 'White Plains, NY');
 
+/* Part 2c */
+ALTER TABLE Part
+ADD FOREIGN KEY (Warehouse) REFERENCES WarehouseDetail(WarehouseNum);
+
 
 /*
-b. Create the following records in the newly created WarehouseDetail table (the method demonstrated in class with the MySQL Workbench Results Grid): 
-	i. WarehouseNum =1, Location = New Haven, CT 
-    ii. WarehouseNum= 2, Location = Boston, MA 
-    iii. WarehouseNum = 3, Location = White Plains, NY 
-
 c. Once you’ve populated the table with the records specified in item b, create a foreign key constraint on the Part table, 
 	making the Warehouse column in the Part table reference WarehouseNum in the WarehouseDetail table. 
 

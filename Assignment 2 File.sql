@@ -111,12 +111,10 @@ INSERT INTO PartInWarehouse VALUES ('FD21', 3);
 INSERT INTO PartInWarehouse VALUES ('KV29', 2);
 INSERT INTO PartInWarehouse VALUES ('AT94', 3);
 
-/*
-e. Create the following records in the newly created PartInWarehouse table: 
-	i. MyPartNum2 = FD21,MyWarehouseNum2 = 3 
-    ii. MyPartNum2 = KV29, MyWarehouseNum2 = 2 
-    iii. MyPartNum2 = AT94, MyWarehouseNum2 = 3 
+/* Part 2f */
+INSERT INTO PartInWarehouse VALUES('KV29', 1);
 
+/*
 f. Show how the primary key constraint is being correctly enforced in the PartInWarehouse table by trying to add the following record to that table: 
 	i. MyPartNum2 = KV29, MyWarehouseNum2 = 1 
 

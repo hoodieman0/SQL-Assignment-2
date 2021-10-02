@@ -72,9 +72,50 @@ SELECT dlocation FROM dept_locations
 				AS temp1) 
 			AS temp2)
 		);
+        
+/* Part Two */
+
+USE premiere_products;
+
+/* Part 2a */
+CREATE TABLE WarehouseDetail
+(
+	WarehouseNum INT NOT NULL,
+    Location VARCHAR(255),
+    
+    PRIMARY KEY(WarehouseNum)
+);
+
 
 /*
-h. List the location(s) of the department that works the fewest number of hours on projects. 
+a. Create a table named “WarehouseDetail” in the database. The table should have two columns: WarehouseNum and Location. 
+	Set WarehouseNum as the primary key for this table. 
+
+b. Create the following records in the newly created WarehouseDetail table (the method demonstrated in class with the MySQL Workbench Results Grid): 
+	i. WarehouseNum =1, Location = New Haven, CT 
+    ii. WarehouseNum= 2, Location = Boston, MA 
+    iii. WarehouseNum = 3, Location = White Plains, NY 
+
+c. Once you’ve populated the table with the records specified in item b, create a foreign key constraint on the Part table, 
+	making the Warehouse column in the Part table reference WarehouseNum in the WarehouseDetail table. 
+
+d. Create a new table named “PartInWarehouse” in the database. The table should have two columns: MyPartNum2 and MyWarehouseNum2. 
+	MyPartNum2 should be set as the primary key for this table. 
+		i. MyPartNum2 should be set as a foreign key to PartNum in the Part table. 
+        ii. MyWarehouse2 should be set as a foreign key to WarehouseNum in the WarehouseDetail table. 
+
+e. Create the following records in the newly created PartInWarehouse table: 
+	i. MyPartNum2 = FD21,MyWarehouseNum2 = 3 
+    ii. MyPartNum2 = KV29, MyWarehouseNum2 = 2 
+    iii. MyPartNum2 = AT94, MyWarehouseNum2 = 3 f. 
+    Show how the primary key constraint is being correctly enforced in the PartInWarehouse table by trying to add the following record to that table: 
+		i. MyPartNum2 = KV29, MyWarehouseNum2 = 1 
+
+g. Show how the foreign key constraint is being correctly enforced in the PartInWarehouse table by trying to add the following record to that table: 
+	i. MyPartNum2 = DW11, MyWarehouseNum = 5 
+    
+h. Use the Export Data function in MySQL Workbench to export a self-contained dump file (.sql file) of your database. 
+	Please name your dump file as follows: [your UNH username]_HW1Q4.sql. For example, a student with the UNH username jsmith2 would name the file jsmith2_HW1Q4.sql. 
 */
 
  

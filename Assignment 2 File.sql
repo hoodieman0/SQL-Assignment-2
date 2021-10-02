@@ -95,11 +95,18 @@ INSERT INTO WarehouseDetail VALUES(3, 'White Plains, NY');
 ALTER TABLE Part
 ADD FOREIGN KEY (Warehouse) REFERENCES WarehouseDetail(WarehouseNum);
 
+/* Part 2d */
+CREATE TABLE PartInWarehouse
+(
+	MyPartNum2 char(4) NOT NULL,
+    MyWarehouseNum2 INT,
+    
+    PRIMARY KEY (MyPartNum2),
+    FOREIGN KEY (MyPartNum2) REFERENCES Part(PartNum),
+    FOREIGN KEY (MyWarehouseNum2) REFERENCES WarehouseDetail(WarehouseNum)
+);
 
 /*
-c. Once you’ve populated the table with the records specified in item b, create a foreign key constraint on the Part table, 
-	making the Warehouse column in the Part table reference WarehouseNum in the WarehouseDetail table. 
-
 d. Create a new table named “PartInWarehouse” in the database. The table should have two columns: MyPartNum2 and MyWarehouseNum2. 
 	MyPartNum2 should be set as the primary key for this table. 
 		i. MyPartNum2 should be set as a foreign key to PartNum in the Part table. 

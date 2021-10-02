@@ -61,14 +61,20 @@ SELECT dname FROM department
 					);
 
 /* Part 1h */
-SELECT plocation FROM project WHERE department.dnumber = (SELECT min(SELECT hours FROM works_on GROUP BY essn ) FROM works_on);
-SELECT * FROM department JOIN works_on JOIN project;
-SELECT * FROM works_on WHERE hours IN (SELECT pno, hours from works_on GROUP BY pno) ;
+SELECT dlocation FROM dept_locations 
+	WHERE dnumber = 
+		(SELECT dnum FROM project 
+        WHERE pnumber = 
+			(SELECT temp2.pno 
+            FROM (SELECT temp1.pno, min(temp1.amount) 
+				FROM (SELECT pno, sum(hours) AS amount FROM works_on 
+                GROUP BY pno)
+				AS temp1) 
+			AS temp2)
+		);
 
 /*
-g. List the name of the department whose employees have the greatest total of dependents. 
-
-h. List the location(s) of the department that worksthe fewest number of hours on projects. 
+h. List the location(s) of the department that works the fewest number of hours on projects. 
 */
 
  
